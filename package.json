@@ -1,0 +1,67 @@
+{
+  "name": "karbon-capacitor-kakao-plugin",
+  "version": "1.0.0",
+  "description": "Kakao Login plugin for Capacitor 7 & 8",
+  "main": "dist/plugin.cjs.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "unpkg": "dist/plugin.js",
+  "files": [
+    "android/",
+    "ios/",
+    "dist/",
+    "KarbonCapacitorKakaoPlugin.podspec"
+  ],
+  "author": "imjongpil",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karbons/karbon-capacitor-kakao-plugin.git"
+  },
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native",
+    "kakao",
+    "login"
+  ],
+  "scripts": {
+    "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
+    "verify:ios": "cd ios && pod lib lint",
+    "verify:android": "cd android && ./gradlew clean build test",
+    "verify:web": "npm run build",
+    "lint": "npm run eslint && npm run prettier -- --check",
+    "fmt": "npm run eslint -- --fix && npm run prettier -- --write",
+    "eslint": "eslint . --ext ts",
+    "prettier": "prettier \"**/*.{css,html,ts,js,json}\"",
+    "build": "npm run clean && tsc && rollup -c rollup.config.js",
+    "clean": "rimraf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/ios": "^7.0.0",
+    "@ionic/eslint-config": "^0.4.0",
+    "@ionic/prettier-config": "^4.0.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-java": "^2.6.6",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.30.1",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "@capacitor/core": "^7.0.0"
+  },
+  "prettier": "@ionic/prettier-config",
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
+  }
+}
